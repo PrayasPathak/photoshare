@@ -1,0 +1,94 @@
+{% extends "photos/base.html" %} <br />
+{% block title %} Photoshare | Home {%endblock title%} {% block content %}
+<main class="m-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card" style="width: 18rem">
+          <div class="card-header">Categories</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">All</li>
+            <a
+              href="{%url 'add'%}"
+              class="btn btn-block btn-secondary btn-sm m-1"
+              >Add Photo</a
+            >
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card my-2 rounded">
+              <img
+                src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+                alt=""
+                class="card-img-top img-thumbail"
+              />
+              <div class="card-body">
+                <p class="card-text">Category: Pets</p>
+              </div>
+              <a
+                href="{%url 'photo' 5%}"
+                class="btn btn-outline-dark btn-sm m-1"
+                >View Details</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card my-2">
+              <img
+                src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+                alt=""
+                class="card-img-top img-thumbail"
+              />
+              <div class="card-body">
+                <p class="card-text">Category: Pets</p>
+              </div>
+              <a
+                href="{%url 'photo' 5%}"
+                class="btn btn-outline-dark btn-sm m-1"
+                >View Details</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card my-2">
+              <img
+                src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+                alt=""
+                class="card-img-top img-thumbail"
+              />
+              <div class="card-body">
+                <p class="card-text">Category: Pets</p>
+              </div>
+              <a
+                href="{%url 'photo' 5%}"
+                class="btn btn-outline-dark btn-sm m-1"
+                >View Details</a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card my-2">
+              <img
+                src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+                alt=""
+                class="card-img-top img-thumbail"
+              />
+              <div class="card-body">
+                <p class="card-text">Category: Pets</p>
+              </div>
+              <a
+                href="{%url 'photo' 5%}"
+                class="btn btn-outline-dark btn-sm m-1"
+                >View Details</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{%endblock content %}
