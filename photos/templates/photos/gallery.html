@@ -3,14 +3,31 @@
 <main class="m-5">
   <div class="container">
     <div class="row">
+      {% if messages %} {% for message in messages%}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <p>{{message}}</p>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %}
       <div class="col-md-3">
         <div class="card" style="width: 18rem">
           <div class="card-header">Categories</div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">All</li>
+            <li class="list-group-item">
+              <a href="{%url 'gallery'%}" class="nav-link">All</a>
+            </li>
             {% for category in categories %}
             <li class="list-group-item">
-              <a href="" class="nav-link">{{category}}</a>
+              <a
+                href="{%url 'gallery'%}?category={{category.name}}"
+                class="nav-link"
+                >{{category}}</a
+              >
             </li>
             {% endfor %}
             <a
@@ -29,7 +46,8 @@
               <img
                 src="{{photo.image.url}}"
                 alt="{{photo.description}}"
-                class="card-img-top img-thumbail"
+                class="card-img-top img-fluid"
+                style="max-height: 200px"
               />
               <div class="card-body">
                 <p class="card-text">Category: {{photo.category}}</p>

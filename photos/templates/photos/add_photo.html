@@ -1,5 +1,55 @@
 {% extends "photos/base.html" %}
 <br />
 {% block title %} Photoshare | Add Photo {%endblock title%} {% block content %}
-<h3 class="text-center">Add Photo</h3>
+<main class="m-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <a href="{%url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
+        <div class="card">
+          <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-control m-3">
+              <label class="form-label">Description</label>
+              <input
+                class="form-control"
+                type="text"
+                name="description"
+                placeholder="Enter image description"
+                required
+              />
+            </div>
+            <div class="form-control m-3">
+              <label class="form-label">Select a category</label>
+              <select name="category" class="form-control">
+                <option value="none">Select a Category...</option>
+                {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-control m-3">
+              <label class="form-label">Create a new category</label>
+              <input
+                class="form-control"
+                type="text"
+                name="category_new"
+                placeholder="Create a new category"
+              />
+            </div>
+
+            <div class="form-control m-3">
+              <label class="form-label">Upload Image</label>
+              <input class="form-control" type="file" name="image" required />
+            </div>
+            <button class="btn btn-primary mx-3 mb-2" type="submit">
+              Add Photo
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock content %}
