@@ -7,11 +7,11 @@ Photo{%endblock %} {% block content %}
         <a href="{%url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
         <div style="height: 90vh">
           <img
-            src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
-            alt="Image of white cat"
+            src="{{photo.image.url}}"
+            alt="photo.description"
             style="max-width: 100%; max-height: 100%"
           />
-          <p>Cat from national geography</p>
+          <p>{{photo.description}}</p>
         </div>
       </div>
     </div>
