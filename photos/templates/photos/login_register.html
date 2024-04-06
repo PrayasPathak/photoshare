@@ -1,0 +1,51 @@
+{% extends "photos/base.html" %}
+{% block content %}
+<style>
+    .login--wrapper{
+        display: flex;
+        align-items: center;
+        height: 80vh;
+        justify-content: center;
+    }
+
+    .form{
+        width: 600px;
+    }
+
+    .register-link{
+        text-decoration: none;
+    }
+</style>
+<div class="container">
+    <div class="login--wrapper">
+        {%if page == 'login'%}
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <h3>Login</h3>
+            <h3>Login to View Photos and share with your friends</h3>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" aria-describedby="username" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <p>Don't have an account? <a href="{%url 'register'%}" class="register-link">Register here</a></p>
+    </form>
+    </div>
+    {%else%}
+        <form  method="post">
+            <h3>Register</h3>
+            {% csrf_token %}
+            {% for field in form %}
+            <label for="password" class="form-label">{{field.label}}</label>
+            {{field}}
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Register</button>
+            <p>Already have an account? <a href="{%url 'login'%}">Login</a></p>
+        </form>
+    {%endif%}
+</div>
+{% endblock content %}
