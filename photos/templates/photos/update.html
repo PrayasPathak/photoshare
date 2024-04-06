@@ -1,0 +1,45 @@
+{% extends "photos/base.html" %}
+{% block content %}
+<style>
+    .form{
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .group{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .group a{
+        position: absolute;
+        left: 23vw;
+    }
+
+
+    
+</style>
+
+<main class="m-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col">
+            <div class="group">
+                <a href="{%url 'gallery' %}" class="btn btn-dark my-3">Go Back</a>
+                <span class="fs-2 text-center">Update</span>
+            </div>
+              <form method="post" class="form">
+                  {% csrf_token %}
+                  {% for field in form %}
+                  <label class="form-label">{{field.label}}</label>
+                  {{field}}
+                  {% endfor %}
+                  <input type="submit" value="Update" class="btn btn-warning mt-3">
+            </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

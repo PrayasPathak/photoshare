@@ -1,0 +1,17 @@
+{% extends "photos/base.html" %}
+{% block content %}
+    <style>
+        form{
+            margin-top: 10px;
+        }
+    </style>
+<div class="container mt-3">
+    <p>Are you sure you want to delete "{{photo}}"?</p>
+    <img src="{{photo.image.url}}" alt="{{photo.description}}" class="img-thumbnail">
+    <form method="post" class="">
+        {% csrf_token %}
+        <a href="{%url 'gallery'%}" class="btn btn-dark">Cancel</a>
+        <input type="submit" value="Confirm" class="btn btn-danger">
+    </form>
+</div>
+{% endblock content %}

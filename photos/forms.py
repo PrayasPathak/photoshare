@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django import forms
+from .models import Photo
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -18,3 +20,15 @@ class CustomUserCreationForm(UserCreationForm):
         self.fields["password2"].widget.attrs.update(
             {"class": "form-control", "placeholder": "Confirm password"}
         )
+
+
+class PhotoUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Photo
+        fields = ["image", "description"]
+        widgets = {
+            "description": forms.Textarea(
+                attrs={"class": "form-control", "rows": 5, "columns": 40}
+            ),
+            "image": forms.ClearableFileInput(attrs={"class": "form-control"}),
+        }

@@ -12,6 +12,8 @@ Photo{%endblock %} {% block content %}
             style="max-width: 100%; max-height: 100%"
           />
           <p>{{photo.description}}</p>
+          <a href="{%url 'update' photo.id%}" class="btn btn-warning">Update</a>
+          <a href="{%url 'delete' photo.id%}" class="btn btn-danger">Delete</a>
         </div>
       </div>
     </div>

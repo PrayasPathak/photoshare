@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 # App level imports
 from .models import Category, Photo
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, PhotoUpdateForm
 import PIL
 
 
@@ -98,3 +98,28 @@ def viewPhoto(request, pk):
     photo = Photo.objects.get(id=pk)
     context = {"photo": photo}
     return render(request, "photos/photo.html", context)
+
+
+@login_required(login_url="login")
+def updatePhoto(request, pk):
+    photo = Photo.objects.get(id=pk)
+    form = PhotoUpdateForm(instance=photo)
+    if request.method == "POST":
+        form = PhotoUpdateForm(request.POST, request.FILES, instance=photo)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Photo was updated successfully")
+            return redirect("gallery")
+    context = {"form": form}
+    return render(request, "photos/update.html", context)
+
+
+@login_required(login_url="login")
+def deletePhoto(request, pk):
+    photo = Photo.objects.get(id=pk)
+    if request.method == "POST":
+        photo.delete()
+        messages.error(request, "Photo was deleted successfully")
+        return redirect("gallery")
+    context = {"photo": photo}
+    return render(request, "photos/delete.html", context)
