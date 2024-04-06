@@ -9,6 +9,8 @@ The following functionality are provided by the project.
 
 - Upload image
 - View image by category
+- User Registration
+- User Login
 
 ## Structure of Project
 
